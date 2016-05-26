@@ -1,0 +1,7 @@
+pre-requirements
+1 postgresql
+
+steps
+1 create a database in postgresql and execute the "init.sql" to create the tables that test case will use.
+2 edit "src/main/resources/mybatis/mybatis-config.xml", change the jdbc parameters to yours.
+3 run "PolicyTest.java" in test folder.
