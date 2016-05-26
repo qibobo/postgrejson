@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiye.postgrejson.policyMapper">
+  <select id="selectOnePolicy" parameterType="string" resultType="com.qiye.postgrejson.domain.Policy">
+    select app_id as appId,policy  from policy where app_id = #{id}::uuid
+  </select>
+  <insert id="insertPolicyJsonb" parameterType="com.qiye.postgrejson.domain.Policy" keyProperty="app_id">
+		insert into policy_jsonb (app_id,policy) values (#{appId}::uuid,#{policy}::jsonb);
+  </insert>
+  <insert id="insertPolicyJson" parameterType="com.qiye.postgrejson.domain.Policy" keyProperty="app_id">
+		insert into policy_json (app_id,policy) values (#{appId}::uuid,#{policy}::json);
+  </insert>
+  <insert id="insertPolicyVarchar" parameterType="com.qiye.postgrejson.domain.Policy" keyProperty="app_id">
+		insert into policy_varchar (app_id,policy) values (#{appId}::uuid,#{policy});
+  </insert>
+  <insert id="insertPolicyText" parameterType="com.qiye.postgrejson.domain.Policy" keyProperty="app_id">
+		insert into policy_varchar (app_id,policy) values (#{appId}::uuid,#{policy});
+  </insert>
+  <!-- <resultMap type="com.qiye.postgrejson.domain.Policy" id="policy">
+  	<id property="appId" column="app_id"/>
+	<result property="policy" column="policy"/>
+  </resultMap> -->
+</mapper>
